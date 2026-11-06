@@ -743,3 +743,48 @@ nav a:hover, nav a:focus-visible { color: var(--green); }
 body.raven-modal-open { overflow:hidden; }
 @keyframes ravenDialogIn { from { opacity:0; transform:translateY(18px) scale(.97); } to { opacity:1; transform:none; } }
 @media (prefers-reduced-motion:reduce) { .raven-modal-dialog { animation:none; } .raven-tile-button::after { transition:none; } }
+
+/* RAVEN 3.0 — Experience Lab */
+.raven-panel { position:relative; isolation:isolate; }
+.raven-live-dot { display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);margin-right:5px; }
+.raven-tile-hint { display:block;color:var(--green);font-size:11px;font-weight:700;letter-spacing:.2px;margin-top:13px;opacity:.8; }
+.raven-tile-button { overflow:hidden; transition:transform .32s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s,background .3s; }
+.raven-tile-button::before { content:"";position:absolute;inset:0;background:radial-gradient(circle at 100% 0%,rgba(186,255,0,.12),transparent 65%);opacity:0;transition:opacity .3s;pointer-events:none; }
+.raven-tile-button:hover::before,.raven-tile-button:focus-visible::before { opacity:1; }
+.raven-tile-button:hover,.raven-tile-button:focus-visible { background:#172513;box-shadow:0 12px 30px rgba(0,0,0,.4),0 0 22px rgba(186,255,0,.12); }
+.raven-modal-dialog { width:min(100%,690px); }
+.raven-modal-topline { display:flex;justify-content:space-between;gap:10px;color:#9fba88;font-size:10px;font-weight:700;letter-spacing:1.2px;margin-bottom:18px; }
+.raven-status-live { float:right;color:#a9d477;letter-spacing:0;font-size:10px; }
+.raven-modal-tabs { display:flex;gap:7px;flex-wrap:wrap;border-bottom:1px solid #344827;padding-bottom:11px;margin-bottom:20px; }
+.raven-tab { border:1px solid #344827;background:#0c130a;color:#bdcbb5;border-radius:9px;padding:10px 14px;font:inherit;font-size:13px;cursor:pointer;transition:background .2s,color .2s,border-color .2s; }
+.raven-tab:hover,.raven-tab:focus-visible { border-color:var(--green); }
+.raven-tab.is-active { background:var(--green);color:#071006;border-color:var(--green);font-weight:800; }
+.raven-tab-panel[hidden] { display:none!important; }
+.raven-tab-panel { animation:ravenTabIn .3s ease-out;min-height:160px; }
+@keyframes ravenTabIn { from { opacity:0;transform:translateY(7px); } to { opacity:1;transform:none; } }
+.raven-modal-dialog ul { margin-bottom:18px; }
+.raven-modal-actions { display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;margin-top:20px; }
+.raven-modal-next { padding:13px 15px;border-radius:9px;border:1px solid #527235;background:#14210e;color:#d8f5bd;font:inherit;font-size:13px;font-weight:700;cursor:pointer; }
+.raven-modal-next:hover { border-color:var(--green); }
+.raven-demo-frame { padding:15px;border:1px solid #344827;border-radius:13px;background:#0a1009; }
+.raven-demo-header { font-size:11px;font-weight:800;letter-spacing:1.3px;color:var(--green);margin-bottom:15px; }
+.raven-browser { overflow:hidden;border:1px solid #344827;border-radius:11px;background:#090d08; }
+.raven-browser-bar { background:#1a2616;color:#a4bd95;padding:10px 15px;font-size:11px;letter-spacing:1px; }
+.raven-browser-body { background:radial-gradient(circle at 90% 10%,#304a18,transparent 60%),linear-gradient(130deg,#0c150b,#070b06);padding:clamp(18px,5vw,34px); }
+.raven-browser-tag { font-size:10px;letter-spacing:1.5px;color:var(--green);font-weight:800; }
+.raven-browser-body h3 { font-size:clamp(20px,4vw,30px);line-height:1.2;margin:12px 0; }
+.raven-browser-body p { margin:0 0 20px;font-size:13px; }
+.raven-browser-link { display:inline-block;border:1px solid var(--green);border-radius:8px;padding:10px 13px;color:var(--green);font-size:12px;font-weight:700; }
+.raven-browser-link:hover { background:var(--green);color:#050705; }
+.raven-demo-lead { font-size:14px; }
+.raven-demo-steps { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px; }
+.raven-demo-step { border:1px solid #344827;border-radius:9px;padding:13px 10px;min-width:0; }
+.raven-demo-step span { display:block;color:var(--green);font-size:22px;font-weight:800;margin-bottom:6px; }
+.raven-demo-step strong { font-size:12px;line-height:1.4;display:block; }
+.raven-demo-note { font-size:12px;margin:14px 0 0!important; }
+.raven-faq-item { border:1px solid #344827;border-radius:10px;margin-bottom:9px;background:#10180d; }
+.raven-faq-item summary { padding:13px 15px;cursor:pointer;font-weight:700;font-size:13px; }
+.raven-faq-item summary::marker { color:var(--green); }
+.raven-faq-item p { padding:0 15px 15px;margin:0!important;font-size:13px; }
+@media(max-width:550px) { .raven-modal { padding:10px; }.raven-modal-dialog { max-height:94dvh;padding:25px 17px; }.raven-modal-actions { grid-template-columns:1fr; }.raven-demo-steps { grid-template-columns:1fr; }.raven-modal-topline span:last-child { display:none; }.raven-tab { padding:9px 10px;font-size:12px; } }
+@media(prefers-reduced-motion:reduce) { .raven-tab-panel { animation:none; }.raven-tile-button,.raven-tile-button::before { transition:none; } }

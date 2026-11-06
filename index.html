@@ -104,31 +104,31 @@
     <button class="service-tile raven-tile-button" type="button" data-raven-service="sites" aria-haspopup="dialog" aria-label="Ver detalhes de Criação de Sites">
       <span class="tile-icon">⌘</span>
       <h3>Criação de Sites</h3>
-      <p>Web Design</p>
+      <p>Web Design</p><span class="raven-tile-hint">Explorar solução ↗</span>
     </button>
 
     <button class="service-tile raven-tile-button" type="button" data-raven-service="pc" aria-haspopup="dialog" aria-label="Ver detalhes de Manutenção PC">
       <span class="tile-icon">▣</span>
       <h3>Manutenção PC</h3>
-      <p>Hardware</p>
+      <p>Hardware</p><span class="raven-tile-hint">Explorar solução ↗</span>
     </button>
 
     <button class="service-tile raven-tile-button" type="button" data-raven-service="suporte" aria-haspopup="dialog" aria-label="Ver detalhes de Suporte Técnico">
       <span class="tile-icon">◈</span>
       <h3>Suporte Técnico</h3>
-      <p>Assistência</p>
+      <p>Assistência</p><span class="raven-tile-hint">Explorar solução ↗</span>
     </button>
 
     <button class="service-tile raven-tile-button" type="button" data-raven-service="redes" aria-haspopup="dialog" aria-label="Ver detalhes de Redes e TI">
       <span class="tile-icon">◎</span>
       <h3>Redes e TI</h3>
-      <p>Conectividade</p>
+      <p>Conectividade</p><span class="raven-tile-hint">Explorar solução ↗</span>
     </button>
 
   </div>
 
   <div class="panel-footer">
-    Tecnologia que transforma ideias.
+    <span class="raven-live-dot" aria-hidden="true"></span> Escolha um serviço e descubra o que podemos criar para você.
   </div>
 
 </div>
@@ -145,11 +145,24 @@
           <div class="raven-modal-backdrop" data-raven-close></div>
           <section class="raven-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="ravenModalTitle" aria-describedby="ravenModalDescription" tabindex="-1">
             <button class="raven-modal-close" type="button" data-raven-close aria-label="Fechar detalhes">✕</button>
-            <span class="raven-modal-eyebrow">RAVEN / SOLUÇÕES DIGITAIS</span>
+            <span class="raven-modal-eyebrow">✦ RAVEN / EXPERIENCE LAB <span class="raven-status-live">● EXPLORAR</span></span>
+            <div class="raven-modal-topline"><span id="ravenModalIndex">01 / 04</span><span>INTERACTIVE EXPERIENCE</span></div>
             <h2 id="ravenModalTitle"></h2>
             <p id="ravenModalDescription"></p>
-            <ul id="ravenModalList"></ul>
-            <a class="button primary raven-modal-cta" id="ravenModalCta" href="#orcamento">Solicitar orçamento</a>
+            <div class="raven-modal-tabs" role="tablist" aria-label="Detalhes do serviço">
+              <button class="raven-tab is-active" id="ravenTabOverview" type="button" role="tab" aria-selected="true" aria-controls="ravenOverview">Visão geral</button>
+              <button class="raven-tab" id="ravenTabDemo" type="button" role="tab" aria-selected="false" aria-controls="ravenDemo">Experiência</button>
+              <button class="raven-tab" id="ravenTabFaq" type="button" role="tab" aria-selected="false" aria-controls="ravenFaq">Dúvidas</button>
+            </div>
+            <div class="raven-tab-panel" id="ravenOverview" role="tabpanel" aria-labelledby="ravenTabOverview"><ul id="ravenModalList"></ul></div>
+            <div class="raven-tab-panel" id="ravenDemo" role="tabpanel" aria-labelledby="ravenTabDemo" hidden>
+              <div class="raven-demo-frame" id="ravenDemoContent"></div>
+            </div>
+            <div class="raven-tab-panel" id="ravenFaq" role="tabpanel" aria-labelledby="ravenTabFaq" hidden><div id="ravenFaqContent"></div></div>
+            <div class="raven-modal-actions">
+              <a class="button primary raven-modal-cta" id="ravenModalCta" href="#orcamento">Solicitar orçamento ↗</a>
+              <button type="button" class="raven-modal-next" id="ravenModalNext">Próxima solução →</button>
+            </div>
           </section>
         </div>
 
@@ -279,7 +292,7 @@
  <div class="container"><div class="section-title"><p class="tag">VAMOS TIRAR SUA IDEIA DO PAPEL</p><h2>Solicite um orçamento</h2><p>Preencha os dados para preparar uma mensagem organizada no WhatsApp.</p></div>
  <form id="ravenQuoteForm" class="raven-quote-form">
   <div class="raven-form-grid"><label>Seu nome <input id="ravenName" name="nome" required maxlength="100" autocomplete="name" placeholder="Como podemos chamar você?"></label><label>Seu negócio <input id="ravenBusiness" name="negocio" maxlength="120" placeholder="Ex.: Barbearia, loja, autônomo"></label></div>
-  <div class="raven-form-grid"><label>Serviço desejado <select id="ravenService" name="servico" required><option value="">Selecione um serviço</option><option>Raven Start — R$ 450</option><option>Raven Business — R$ 990</option><option>Raven Premium — R$ 1.800+</option><option>Raven Care — R$ 49,90/mês</option><option>Raven Pro — R$ 99,90/mês</option><option>Raven Max — R$ 199,90/mês</option><option>Suporte de TI e informática</option><option>Outro serviço</option></select></label><label>Prazo desejado <select id="ravenDeadline" name="prazo"><option>Flexível</option><option>Até 30 dias</option><option>Urgente — consultar disponibilidade</option></select></label></div>
+  <div class="raven-form-grid"><label>Serviço desejado <select id="ravenService" name="servico" required><option value="">Selecione um serviço</option><option>Raven Start — R$ 450</option><option>Raven Business — R$ 990</option><option>Raven Premium — R$ 1.800+</option><option>Raven Care — R$ 49,90/mês</option><option>Raven Pro — R$ 99,90/mês</option><option>Raven Max — R$ 199,90/mês</option><option>Criação de Sites</option><option>Manutenção PC</option><option>Suporte Técnico</option><option>Redes e TI</option><option>Suporte de TI e informática</option><option>Outro serviço</option></select></label><label>Prazo desejado <select id="ravenDeadline" name="prazo"><option>Flexível</option><option>Até 30 dias</option><option>Urgente — consultar disponibilidade</option></select></label></div>
   <label>Conte um pouco sobre o projeto <textarea id="ravenDetails" name="detalhes" rows="5" maxlength="1500" placeholder="O que você precisa? Quais funcionalidades gostaria de ter?"></textarea></label>
   <button type="submit" class="button primary raven-submit">Preparar orçamento no WhatsApp</button>
   <p id="ravenQuoteStatus" class="raven-fineprint" role="status" aria-live="polite">Nenhum pedido será enviado automaticamente sem sua confirmação no WhatsApp.</p>
