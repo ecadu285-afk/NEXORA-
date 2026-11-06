@@ -38,6 +38,7 @@
     <a href="#servicos">Serviços</a>
     <a href="#planos">Planos</a>
     <a href="#mensalidades">Mensalidades</a>
+    <a href="#catalogo">Catálogo</a>
     <a href="#orcamento">Orçamento</a>
     <a href="#projetos">Projetos</a>
     <a href="#sobre">Sobre</a>
@@ -288,6 +289,36 @@
  <div class="raven-steps"><div><strong>01</strong><h3>Solicitação</h3><p>Você descreve seu projeto.</p></div><div><strong>02</strong><h3>Proposta</h3><p>Definimos escopo, prazo e valor.</p></div><div><strong>03</strong><h3>Desenvolvimento</h3><p>Construímos e validamos a solução.</p></div><div><strong>04</strong><h3>Entrega</h3><p>Publicação, orientações e suporte contratado.</p></div></div>
  </div>
 </section>
+
+<section id="catalogo" class="section raven-catalog-section" aria-labelledby="catalogTitle">
+  <div class="container">
+    <div class="section-title"><p class="tag">EXPLORE O UNIVERSO RAVEN</p><h2 id="catalogTitle">Soluções para cada etapa do seu negócio.</h2><p>Descubra o que podemos desenvolver. Abra os detalhes e monte seu pedido de orçamento.</p></div>
+    <div class="raven-catalog-toolbar">
+      <label class="raven-search-label" for="ravenCatalogSearch">Buscar serviço
+        <input id="ravenCatalogSearch" type="search" placeholder="Ex.: loja virtual, backup, automação..." autocomplete="off">
+      </label>
+      <div class="raven-catalog-filters" id="ravenCatalogFilters" role="group" aria-label="Filtrar categoria"></div>
+    </div>
+    <p class="raven-catalog-count" id="ravenCatalogCount" role="status" aria-live="polite"></p>
+    <div class="raven-catalog-grid" id="ravenCatalogGrid"></div>
+    <p class="raven-catalog-note">Os preços são estimativas iniciais. Serviços avançados e produtos futuros estão identificados; a contratação depende de análise técnica e disponibilidade.</p>
+  </div>
+</section>
+<div class="raven-catalog-modal" id="ravenCatalogModal" hidden>
+  <div class="raven-catalog-shade" data-catalog-close></div>
+  <section class="raven-catalog-dialog" role="dialog" aria-modal="true" aria-labelledby="ravenCatalogModalTitle" tabindex="-1">
+    <button type="button" class="raven-catalog-close" data-catalog-close aria-label="Fechar detalhes">✕</button>
+    <p class="tag" id="ravenCatalogModalCategory"></p>
+    <h2 id="ravenCatalogModalTitle"></h2>
+    <p id="ravenCatalogModalDesc"></p>
+    <h3>O que está incluído ou pode ser desenvolvido</h3>
+    <ul id="ravenCatalogModalFeatures"></ul>
+    <p class="raven-catalog-price" id="ravenCatalogModalPrice"></p>
+    <p class="raven-catalog-caution" id="ravenCatalogModalCaution"></p>
+    <a href="#orcamento" class="button primary" id="ravenCatalogModalQuote">Solicitar avaliação ↗</a>
+  </section>
+</div>
+
 <section id="orcamento" class="section raven-quote-section">
  <div class="container"><div class="section-title"><p class="tag">VAMOS TIRAR SUA IDEIA DO PAPEL</p><h2>Solicite um orçamento</h2><p>Preencha os dados para preparar uma mensagem organizada no WhatsApp.</p></div>
  <form id="ravenQuoteForm" class="raven-quote-form">
@@ -308,6 +339,7 @@
     <label class="raven-choice-card"><input type="radio" name="servico" value="Suporte Técnico" required><span class="raven-choice-content"><span class="raven-choice-check" aria-hidden="true">✓</span><strong>Suporte Técnico</strong><b>Sob orçamento</b><small>Programas, sistemas e assistência</small></span></label>
     <label class="raven-choice-card"><input type="radio" name="servico" value="Redes e TI" required><span class="raven-choice-content"><span class="raven-choice-check" aria-hidden="true">✓</span><strong>Redes e TI</strong><b>Sob orçamento</b><small>Wi-Fi, roteadores e conectividade</small></span></label>
    </div></div>
+   <div class="raven-choice-category"><h3>Outros serviços e projetos</h3><div class="raven-choice-grid" id="ravenExtraChoices"></div></div>
   </fieldset>
   <div class="raven-selected-summary" id="ravenSelectedSummary" role="status" aria-live="polite">Nenhuma opção selecionada ainda.</div>
   <div class="raven-form-grid"><label>02 · Prazo desejado <select id="ravenDeadline" name="prazo"><option>Flexível</option><option>Até 30 dias</option><option>Urgente — consultar disponibilidade</option></select></label></div>

@@ -812,3 +812,45 @@ body.raven-modal-open { overflow:hidden; }
 @media(max-width:800px){.raven-choice-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media(max-width:520px){.raven-choice-grid{grid-template-columns:1fr;}.raven-choice-content{min-height:unset;padding:16px;}}
 @media(prefers-reduced-motion:reduce){.raven-choice-content,.raven-choice-check{transition:none!important;}.raven-choice-card:hover .raven-choice-content{transform:none;}}
+
+
+/* RAVEN 3.2 — catálogo explorável */
+.raven-catalog-section{background:linear-gradient(150deg,#080d08,#111a0b 55%,#080b07)}
+.raven-catalog-toolbar{display:grid;gap:22px;margin-bottom:20px}
+.raven-search-label{display:grid;gap:8px;font-weight:700;max-width:560px}
+.raven-search-label input{width:100%;padding:15px 17px;background:#080c08;color:#fff;border:1px solid #405a29;border-radius:10px;font:inherit;outline-offset:3px}
+.raven-search-label input:focus{border-color:var(--green)}
+.raven-catalog-filters{display:flex;flex-wrap:wrap;gap:9px}
+.raven-filter{border:1px solid #354a27;background:#101910;color:#d9e4d3;border-radius:999px;padding:10px 15px;font:inherit;cursor:pointer;transition:background .25s,border-color .25s,transform .25s}
+.raven-filter:hover,.raven-filter:focus-visible{border-color:var(--green);transform:translateY(-2px)}
+.raven-filter[aria-pressed="true"]{background:var(--green);color:#061000;border-color:var(--green);font-weight:700}
+.raven-catalog-count{color:var(--muted);font-size:14px;margin:12px 0 18px}
+.raven-catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.raven-catalog-card{background:linear-gradient(150deg,#151e12,#0a1009);border:1px solid #314628;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:11px;min-width:0;transition:transform .3s,border-color .3s,box-shadow .3s}
+.raven-catalog-card:hover{transform:translateY(-5px);border-color:var(--green);box-shadow:0 14px 40px #0008,0 0 24px #baff0014}
+.raven-catalog-card h3{font-size:21px;line-height:1.25}
+.raven-catalog-card p{color:var(--muted);font-size:14px;flex:1}
+.raven-catalog-card .raven-catalog-category{color:var(--green);font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:700}
+.raven-catalog-card strong{color:#e9ffbf;font-size:15px}
+.raven-catalog-card button{border:1px solid var(--green);background:transparent;color:var(--green);padding:11px;border-radius:9px;font:inherit;font-weight:700;cursor:pointer;transition:background .25s,color .25s}
+.raven-catalog-card button:hover{background:var(--green);color:#071000}
+.raven-catalog-status{font-size:11px;border:1px solid #536443;border-radius:99px;padding:3px 8px;width:max-content;color:#c3d4b7}
+.raven-catalog-status.future{border-color:#7c6740;color:#e2c88d}
+.raven-catalog-note{margin-top:22px;color:var(--muted);font-size:13px}
+.raven-catalog-modal[hidden]{display:none}
+.raven-catalog-modal{position:fixed;inset:0;z-index:4000;display:grid;place-items:center;padding:20px}
+.raven-catalog-shade{position:absolute;inset:0;background:#000c;backdrop-filter:blur(8px)}
+.raven-catalog-dialog{position:relative;width:min(650px,100%);max-height:min(88vh,850px);overflow-y:auto;background:linear-gradient(145deg,#172415,#090e08);border:1px solid var(--green);box-shadow:0 20px 70px #000c;border-radius:19px;padding:clamp(22px,4vw,40px);animation:ravenCatalogEnter .3s ease-out}
+.raven-catalog-dialog h2{font-size:clamp(26px,4vw,38px);margin-bottom:14px}
+.raven-catalog-dialog h3{font-size:17px;margin:23px 0 12px}
+.raven-catalog-dialog p{color:#c6d2bf}
+.raven-catalog-dialog ul{padding-left:22px;color:#e0eadb;display:grid;gap:9px;margin-bottom:22px}
+.raven-catalog-dialog li::marker{color:var(--green)}
+.raven-catalog-dialog .raven-catalog-price{font-size:19px;font-weight:800;color:var(--green);margin-bottom:10px}
+.raven-catalog-dialog .raven-catalog-caution{font-size:13px;margin-bottom:23px}
+.raven-catalog-close{position:absolute;right:16px;top:12px;background:transparent;border:1px solid #536a42;color:#fff;border-radius:8px;padding:6px 11px;cursor:pointer;font-size:20px}
+.raven-catalog-modal-open{overflow:hidden}
+@keyframes ravenCatalogEnter{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:850px){.raven-catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.raven-catalog-grid{grid-template-columns:1fr}.raven-catalog-card{padding:20px}.raven-filter{font-size:13px;padding:9px 12px}}
+@media(prefers-reduced-motion:reduce){.raven-catalog-dialog{animation:none}.raven-catalog-card,.raven-filter{transition:none}}
