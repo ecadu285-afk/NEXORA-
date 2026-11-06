@@ -1,0 +1,722 @@
+/* RAVEN CREATIVES STUDIOS — CSS organizado */
+
+:root {
+
+  --green: #baff00;
+
+  --green-soft: #d4ff55;
+
+  --black: #050705;
+
+  --surface: #0d120b;
+
+  --surface-alt: #10190d;
+
+  --border: #2c401c;
+
+  --muted: #b5c0ae;
+
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+body { font-family: Arial, Helvetica, sans-serif; background: var(--black); color: #fff; line-height: 1.6; }
+
+a { color: inherit; text-decoration: none; }
+
+.container { width: 90%; max-width: 1150px; margin: 0 auto; }
+
+
+
+/* Cabeçalho */
+
+.header { position: fixed; inset: 0 0 auto; width: 100%; z-index: 1000; background: rgba(5,7,5,.92); border-bottom: 1px solid rgba(186,255,0,.13); backdrop-filter: blur(12px); }
+
+.nav { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+
+.logo { display: inline-flex; align-items: center; flex-shrink: 0; }
+
+.logo-img { width: 66px; height: 66px; object-fit: cover; border-radius: 50%; display: block; border: 2px solid var(--green); box-shadow: 0 0 12px rgba(186,255,0,.22); }
+
+nav { display: flex; align-items: center; gap: 25px; }
+
+nav a { color: #d0d7cc; font-size: 14px; transition: color .2s; }
+
+nav a:hover, nav a:focus-visible { color: var(--green); }
+
+.nav-button { padding: 10px 18px; border: 1px solid var(--green); border-radius: 8px; color: #fff; font-size: 14px; transition: background .2s, color .2s; white-space: nowrap; }
+
+.nav-button:hover { background: var(--green); color: #050505; }
+
+
+
+/* Abertura e imagem do corvo */
+
+.hero { min-height: 100vh; display: flex; align-items: center; padding: 125px 0 70px; background: linear-gradient(90deg, rgba(0,0,0,.96) 0%, rgba(0,0,0,.82) 42%, rgba(0,0,0,.18) 100%), url('corvo-raven.png') center / cover no-repeat; }
+
+.hero-content { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr); gap: 55px; align-items: center; }
+
+.tag { color: var(--green); font-size: 13px; font-weight: 700; letter-spacing: 2px; margin-bottom: 18px; }
+
+.hero h1 { font-size: clamp(42px,6vw,75px); line-height: 1.08; margin-bottom: 25px; }
+
+.hero h1 span { display: block; color: var(--green); }
+
+.hero-description { max-width: 600px; color: #d1d8cb; font-size: 18px; margin-bottom: 35px; }
+
+.hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+
+.button { display: inline-block; padding: 14px 22px; border-radius: 8px; font-weight: 700; transition: background .2s, border-color .2s, transform .2s; }
+
+.button.primary { background: var(--green); color: #050505; border: 1px solid var(--green); }
+
+.button.primary:hover { background: var(--green-soft); transform: translateY(-2px); }
+
+.button.secondary { border: 1px solid var(--green); color: #fff; }
+
+.button.secondary:hover { background: rgba(186,255,0,.12); }
+
+
+
+/* Painel Raven — aceita o nome antigo da classe durante a transição */
+
+.hero-card { overflow: hidden; border-radius: 18px; box-shadow: 0 20px 65px rgba(0,0,0,.55); }
+
+.raven-panel, .nexora-panel { background: linear-gradient(145deg, rgba(8,12,8,.96), rgba(17,27,10,.96)); border: 1px solid var(--green); padding: 22px; width: 100%; max-width: 480px; animation: panelAppear .8s ease-out; }
+
+.panel-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 20px; }
+
+.panel-brand { color: var(--green); font-size: 14px; font-weight: 800; letter-spacing: .5px; }
+
+.panel-status { color: #a8e5a0; font-size: 12px; white-space: nowrap; }
+
+.panel-services { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+
+.service-tile { min-width: 0; padding: 16px 12px; background: linear-gradient(145deg,#101810,#080c08); border: 1px solid var(--border); border-radius: 12px; transition: transform .25s,border-color .25s,box-shadow .25s; }
+
+.service-tile:hover { transform: translateY(-4px); border-color: var(--green); box-shadow: 0 0 18px rgba(186,255,0,.17); }
+
+.tile-icon { display: block; color: var(--green); font-size: 27px; margin-bottom: 10px; }
+
+.service-tile h3 { color: #fff; font-size: 14px; line-height: 1.4; margin-bottom: 5px; }
+
+.service-tile p { color: var(--muted); font-size: 12px; }
+
+.panel-footer { color: var(--muted); font-size: 12px; margin-top: 20px; text-align: center; }
+
+@keyframes panelAppear { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+
+
+/* Seções e serviços */
+
+.section { padding: 110px 0; }
+
+.section-title { max-width: 700px; margin-bottom: 55px; }
+
+.section-title h2 { font-size: clamp(30px,4vw,42px); line-height: 1.15; margin-bottom: 15px; }
+
+.section-title > p:last-child { color: var(--muted); }
+
+.services { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px; }
+
+.service-card { padding: 35px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; transition: transform .25s,border-color .25s; }
+
+.service-card:hover { transform: translateY(-7px); border-color: var(--green); }
+
+.icon { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; border-radius: 8px; background: rgba(186,255,0,.12); color: var(--green); font-weight: 700; }
+
+.service-card h3 { font-size: 22px; margin-bottom: 12px; }
+
+.service-card p { color: var(--muted); margin-bottom: 25px; }
+
+.service-card a { color: var(--green); font-weight: 700; }
+
+.service-card a:hover { color: var(--green-soft); }
+
+
+
+/* Portfólio */
+
+.projects-section { background: #090d08; }
+
+.project { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 50px; align-items: center; }
+
+.project-image { min-height: 330px; display: flex; align-items: center; justify-content: center; background: linear-gradient(145deg,#101a0b,#050805); border: 1px solid var(--border); border-radius: 15px; }
+
+.project-placeholder { text-align: center; padding: 20px; }
+
+.project-placeholder span { display: block; color: var(--green); font-size: 12px; letter-spacing: 2px; margin-bottom: 10px; }
+
+.project-placeholder strong { font-size: 25px; }
+
+.project-category { color: var(--green); font-size: 12px; font-weight: 700; letter-spacing: 2px; margin-bottom: 15px; }
+
+.project-info h3 { font-size: 38px; margin-bottom: 20px; }
+
+.project-info > p:not(.project-category) { color: var(--muted); margin-bottom: 30px; }
+
+.btn { display: inline-block; padding: 12px 20px; border-radius: 8px; font-weight: 700; }
+
+.btn-outline { border: 1px solid var(--green); color: var(--green); transition: background .2s,color .2s; }
+
+.btn-outline:hover { background: var(--green); color: #050505; }
+
+
+
+/* Sobre */
+
+.about { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 80px; align-items: start; }
+
+.about h2 { font-size: clamp(30px,4vw,42px); line-height: 1.15; }
+
+.about p:not(.tag) { color: var(--muted); margin-bottom: 20px; }
+
+
+
+/* Contato */
+
+.contact { padding: 120px 0; text-align: center; background: radial-gradient(circle,rgba(186,255,0,.10),transparent 48%),#090d08; }
+
+.contact-content { max-width: 750px; }
+
+.contact h2 { font-size: clamp(38px,5vw,60px); line-height: 1.1; margin-bottom: 20px; }
+
+.contact h2 span { display: block; color: var(--green); }
+
+.contact p:not(.tag) { color: var(--muted); margin-bottom: 30px; }
+
+/* MENU RESPONSIVO RAVEN */
+
+
+
+.menu-toggle {
+
+    display: none;
+
+    background: transparent;
+
+    border: 1px solid #baff00;
+
+    border-radius: 8px;
+
+    color: #baff00;
+
+    font-size: 26px;
+
+    padding: 4px 12px;
+
+    cursor: pointer;
+
+}
+
+
+
+@media (max-width: 850px) {
+
+    .nav {
+
+        position: relative;
+
+    }
+
+
+
+    .menu-toggle {
+
+        display: block;
+
+        margin-left: auto;
+
+    }
+
+
+
+    .nav nav {
+
+        display: none;
+
+        position: absolute;
+
+        top: 100%;
+
+        left: 0;
+
+        width: 100%;
+
+        padding: 20px;
+
+        background: #090d08;
+
+        border: 1px solid #34451b;
+
+        border-radius: 0 0 12px 12px;
+
+        flex-direction: column;
+
+        gap: 20px;
+
+        box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+
+    }
+
+
+
+    .nav nav.active {
+
+        display: flex;
+
+    }
+
+
+
+    .nav-button {
+
+        display: none;
+
+    }
+
+}
+
+/* CORREÇÃO DO SITE RAVEN PARA CELULARES */
+
+
+
+@media (max-width: 850px) {
+
+
+
+    .hero-content {
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: stretch !important;
+
+        gap: 35px !important;
+
+    }
+
+
+
+    .hero-text {
+
+        width: 100%;
+
+        min-width: 0;
+
+    }
+
+
+
+    .hero h1 {
+
+        font-size: clamp(36px, 9vw, 48px);
+
+        overflow-wrap: break-word;
+
+    }
+
+
+
+    .hero-card,
+
+    .raven-panel {
+
+        width: 100% !important;
+
+        max-width: 100% !important;
+
+        min-width: 0;
+
+    }
+
+
+
+    .panel-services {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+
+
+
+    .service-tile {
+
+        min-width: 0;
+
+        overflow-wrap: break-word;
+
+    }
+
+
+
+    .panel-header {
+
+        flex-wrap: wrap;
+
+    }
+
+
+
+    .hero-buttons .button {
+
+        text-align: center;
+
+    }
+
+}
+
+/* CORREÇÃO DOS CARTÕES DE SERVIÇOS NO CELULAR */
+
+
+
+@media (max-width: 850px) {
+
+
+
+    .services {
+
+        display: grid !important;
+
+        grid-template-columns: 1fr !important;
+
+        gap: 20px !important;
+
+    }
+
+
+
+    .service-card {
+
+        width: 100% !important;
+
+        min-width: 0;
+
+        padding: 25px;
+
+    }
+
+
+
+    .service-card h3 {
+
+        overflow-wrap: break-word;
+
+    }
+
+
+
+}
+
+/* PROJETOS RESPONSIVOS - RAVEN */
+
+
+
+@media (max-width: 850px) {
+
+
+
+    .project {
+
+        display: grid !important;
+
+        grid-template-columns: minmax(0, 1fr) !important;
+
+        gap: 30px !important;
+
+    }
+
+
+
+    .project-image,
+
+    .project-info {
+
+        width: 100%;
+
+        min-width: 0;
+
+    }
+
+
+
+    .project-image {
+
+        min-height: 250px;
+
+    }
+
+
+
+    .project-info h3 {
+
+        font-size: 30px;
+
+        overflow-wrap: break-word;
+
+    }
+
+
+
+}
+
+
+
+/* RAVEN — Transições suaves */
+
+
+
+/* Revelação discreta durante a rolagem */
+
+.reveal {
+
+    opacity: 0;
+
+    transform: translateY(16px);
+
+    transition:
+
+        opacity 0.65s ease,
+
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+
+}
+
+
+
+.reveal.is-visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+
+/* Cards com movimentos naturais */
+
+.service-card,
+
+.service-tile {
+
+    transition:
+
+        transform 0.35s ease,
+
+        border-color 0.35s ease,
+
+        box-shadow 0.35s ease;
+
+}
+
+
+
+.service-card:hover,
+
+.service-tile:hover {
+
+    transform: translateY(-3px);
+
+    border-color: rgba(186, 255, 0, 0.55);
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+}
+
+
+
+/* Botões com acabamento discreto */
+
+.button,
+
+.nav-button,
+
+.btn-outline {
+
+    transition:
+
+        background-color 0.3s ease,
+
+        color 0.3s ease,
+
+        border-color 0.3s ease,
+
+        transform 0.3s ease;
+
+}
+
+
+
+/* Menu mobile com entrada suave */
+
+@media (max-width: 850px) {
+
+    .nav nav.active {
+
+        animation: ravenMenuIn 0.25s ease-out;
+
+    }
+
+
+
+    @keyframes ravenMenuIn {
+
+        from {
+
+            opacity: 0;
+
+            transform: translateY(-8px);
+
+        }
+
+        to {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+    }
+
+}
+
+
+
+/* Acessibilidade: menos movimento */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+
+        scroll-behavior: auto;
+
+    }
+
+
+
+    .reveal,
+
+    .reveal.is-visible {
+
+        opacity: 1;
+
+        transform: none;
+
+        transition: none;
+
+    }
+
+
+
+    .service-card,
+
+    .service-tile,
+
+    .button,
+
+    .nav-button,
+
+    .btn-outline {
+
+        transition: none;
+
+    }
+
+
+
+    .nav nav.active,
+
+    .raven-panel {
+
+        animation: none;
+
+    }
+
+}
+
+
+
+/* Raven — imagem do portfólio */
+
+
+
+.project-image {
+
+    overflow: hidden;
+
+    min-height: 0;
+
+    background: #080b07;
+
+}
+
+
+
+.project-preview {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    transition: transform 0.5s ease;
+
+}
+
+
+
+@media (hover: hover) {
+
+    .project-image:hover .project-preview {
+
+        transform: scale(1.025);
+
+    }
+
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .project-preview {
+
+        transition: none;
+
+    }
+
+}
+/* RAVEN 2.0 — Planos, mensalidades e orçamento */
+.raven-offers,.raven-process { background:#090d08; }
+.raven-subscriptions,.raven-quote-section { background:#060906; }
+.raven-pricing-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px; }
+.raven-price-card { min-width:0;display:flex;flex-direction:column;gap:15px;padding:28px;background:linear-gradient(150deg,#1b2518,#101610);border:1px solid #354b25;border-radius:16px; }
+.raven-price-card.raven-featured { border-color:var(--green);box-shadow:0 0 24px rgba(186,255,0,.08); }
+.raven-pill { color:var(--green);font-weight:800;font-size:12px;letter-spacing:.7px; }
+.raven-price-card h3 { font-size:clamp(29px,3vw,39px);line-height:1.2; }
+.raven-price-card h3 small { font-size:14px;font-weight:400;color:var(--muted); }
+.raven-price-card p,.raven-price-card li,.raven-steps p { color:var(--muted); }
+.raven-price-card ul { list-style:none;padding:0;margin:0 0 14px;flex:1; }
+.raven-price-card li { margin:10px 0;padding-left:19px;position:relative;font-size:14px; }
+.raven-price-card li::before { content:'✓';position:absolute;left:0;color:var(--green); }
+.raven-price-card .button { display:block;text-align:center; }
+.raven-fineprint { color:var(--muted);font-size:13px;margin-top:20px; }
+.raven-steps { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px; }
+.raven-steps>div { padding:22px;background:var(--surface);border:1px solid var(--border);border-radius:12px; }
+.raven-steps strong { color:var(--green);font-size:28px; }
+.raven-steps h3 { margin:8px 0; }
+.raven-quote-form { max-width:850px;padding:30px;background:#111a0e;border:1px solid var(--border);border-radius:18px; }
+.raven-form-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px; }
+.raven-quote-form label { display:block;font-size:14px;font-weight:700;margin-bottom:18px; }
+.raven-quote-form input,.raven-quote-form select,.raven-quote-form textarea { display:block;width:100%;margin-top:8px;padding:13px 14px;border:1px solid #425635;border-radius:9px;background:#080d07;color:#fff;font:inherit;min-width:0; }
+.raven-quote-form input:focus,.raven-quote-form select:focus,.raven-quote-form textarea:focus { outline:2px solid var(--green);outline-offset:1px; }
+.raven-quote-form .raven-submit { cursor:pointer;font:inherit; }
+@media(max-width:850px) { .raven-pricing-grid { grid-template-columns:1fr; }.raven-steps { grid-template-columns:repeat(2,minmax(0,1fr)); }.raven-form-grid { grid-template-columns:1fr;gap:0; } }
+@media(max-width:480px) { .raven-steps { grid-template-columns:1fr; }.raven-quote-form { padding:18px; }.raven-price-card { padding:22px; } }
