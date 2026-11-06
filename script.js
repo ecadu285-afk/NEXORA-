@@ -16,10 +16,23 @@ document.addEventListener("DOMContentLoaded", () => {
   // Configure o número comercial com DDI + DDD + número, apenas dígitos.
   // Exemplo fictício: "5582999999999". Deixe vazio para o usuário escolher o destinatário.
   const WHATSAPP_RAVEN = "";
-  const servico = document.getElementById("ravenService");
+  const resumo = document.getElementById("ravenSelectedSummary");
+  const opcoes = [...document.querySelectorAll('input[name="servico"]')];
+  function escolherServico(valor) {
+    const opcao = opcoes.find(input => input.value === valor) || (valor === "Criação de Sites" ? opcoes.find(input => input.value.startsWith("Raven Start")) : null);
+    if (!opcao) return;
+    opcao.checked = true;
+    atualizarEscolha();
+  }
+  function atualizarEscolha() {
+    const selecionado = document.querySelector('input[name="servico"]:checked');
+    if (resumo) resumo.textContent = selecionado ? `✓ Selecionado: ${selecionado.value}` : "Nenhuma opção selecionada ainda.";
+  }
+  opcoes.forEach(opcao => opcao.addEventListener("change", atualizarEscolha));
+  window.ravenEscolherServico = escolherServico;
   document.querySelectorAll(".raven-select-plan").forEach((link) => {
     link.addEventListener("click", () => {
-      if (servico) servico.value = link.dataset.plan || "";
+      escolherServico(link.dataset.plan || "");
     });
   });
   const formulario = document.getElementById("ravenQuoteForm");
@@ -28,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!formulario.reportValidity()) return;
     const nome = document.getElementById("ravenName").value.trim();
     const negocio = document.getElementById("ravenBusiness").value.trim();
-    const escolha = servico.value;
+    const escolha = document.querySelector('input[name="servico"]:checked')?.value || "";
     const prazo = document.getElementById("ravenDeadline").value;
     const detalhes = document.getElementById("ravenDetails").value.trim();
     const mensagem = `Olá! Gostaria de solicitar um orçamento na Raven Creatives Studios.\n\nNome: ${nome}\nNegócio: ${negocio || "Não informado"}\nServiço: ${escolha}\nPrazo: ${prazo}\nDetalhes: ${detalhes || "A combinar"}`;
@@ -81,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
   modal.querySelectorAll("[data-raven-close]").forEach(el=>el.addEventListener("click",fechar));
   tabs.forEach((tab,i)=>tab.addEventListener("click",()=>ativarAba(i)));
   document.getElementById("ravenModalNext").addEventListener("click",()=>{mostrar(indice+1);dialog.focus();});
-  cta.addEventListener("click",()=>{const servico=document.getElementById("ravenService");if(servico)servico.value=cta.dataset.plan;fechar();});
+  cta.addEventListener("click",()=>{window.ravenEscolherServico?.(cta.dataset.plan);fechar();});
   document.addEventListener("keydown",evento=>{
     if(modal.hidden)return;
     if(evento.key==="Escape"){evento.preventDefault();fechar();return;}

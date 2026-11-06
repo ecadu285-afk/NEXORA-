@@ -292,11 +292,28 @@
  <div class="container"><div class="section-title"><p class="tag">VAMOS TIRAR SUA IDEIA DO PAPEL</p><h2>Solicite um orçamento</h2><p>Preencha os dados para preparar uma mensagem organizada no WhatsApp.</p></div>
  <form id="ravenQuoteForm" class="raven-quote-form">
   <div class="raven-form-grid"><label>Seu nome <input id="ravenName" name="nome" required maxlength="100" autocomplete="name" placeholder="Como podemos chamar você?"></label><label>Seu negócio <input id="ravenBusiness" name="negocio" maxlength="120" placeholder="Ex.: Barbearia, loja, autônomo"></label></div>
-  <div class="raven-form-grid"><label>Serviço desejado <select id="ravenService" name="servico" required><option value="">Selecione um serviço</option><option>Raven Start — R$ 450</option><option>Raven Business — R$ 990</option><option>Raven Premium — R$ 1.800+</option><option>Raven Care — R$ 49,90/mês</option><option>Raven Pro — R$ 99,90/mês</option><option>Raven Max — R$ 199,90/mês</option><option>Criação de Sites</option><option>Manutenção PC</option><option>Suporte Técnico</option><option>Redes e TI</option><option>Suporte de TI e informática</option><option>Outro serviço</option></select></label><label>Prazo desejado <select id="ravenDeadline" name="prazo"><option>Flexível</option><option>Até 30 dias</option><option>Urgente — consultar disponibilidade</option></select></label></div>
-  <label>Conte um pouco sobre o projeto <textarea id="ravenDetails" name="detalhes" rows="5" maxlength="1500" placeholder="O que você precisa? Quais funcionalidades gostaria de ter?"></textarea></label>
-  <button type="submit" class="button primary raven-submit">Preparar orçamento no WhatsApp</button>
-  <p id="ravenQuoteStatus" class="raven-fineprint" role="status" aria-live="polite">Nenhum pedido será enviado automaticamente sem sua confirmação no WhatsApp.</p>
- </form></div>
+  <fieldset class="raven-choice-fieldset"><legend>01 · Escolha o que você precisa</legend><p class="raven-choice-intro">Selecione um cartão para continuar. Você pode mudar sua escolha a qualquer momento.</p>
+   <div class="raven-choice-category"><h3>Criação de sites</h3><div class="raven-choice-grid">
+    <label class="raven-choice-card"><input type="radio" name="servico" value="Raven Start — R$ 450" required><span class="raven-choice-content"><span class="raven-choice-check" aria-hidden="true">✓</span><strong>Raven Start</strong><b>R$ 450</b><small>Landing page responsiva</small></span></label>
+    <label class="raven-choice-card"><input type="radio" name="servico" value="Raven Business — R$ 990" required><span class="raven-choice-content"><span class="raven-choice-check" aria-hidden="true">✓</span><strong>Raven Business</strong><b>R$ 990</b><small>Site institucional completo</small></span></label>
+    <label class="raven-choice-card"><input type="radio" name="servico" value="Raven Premium — R$ 1.800+" required><span class="raven-choice-content"><span class="raven-choice-check" aria-hidden="true">✓</span><strong>Raven Premium</strong><b>R$ 1.800+</b><small>Projetos e integrações sob medida</small></span></label>
+   </div></div>
+   <div class="raven-choice-category"><h3>Planos mensais</h3><div class="raven-choice-grid">
+    <label class="raven-choice-card"><input type="radio" name="servico" value="Raven Care — R$ 49,90/mês" required><span class="raven-choice-content"><span class="raven-choice-check" aria-hidden="true">✓</span><strong>Raven Care</strong><b>R$ 49,90/mês</b><small>Monitoramento e verificações</small></span></label>
+    <label class="raven-choice-card"><input type="radio" name="servico" value="Raven Pro — R$ 99,90/mês" required><span class="raven-choice-content"><span class="raven-choice-check" aria-hidden="true">✓</span><strong>Raven Pro</strong><b>R$ 99,90/mês</b><small>Monitoramento e pequenas atualizações</small></span></label>
+    <label class="raven-choice-card"><input type="radio" name="servico" value="Raven Max — R$ 199,90/mês" required><span class="raven-choice-content"><span class="raven-choice-check" aria-hidden="true">✓</span><strong>Raven Max</strong><b>R$ 199,90/mês</b><small>Mais alterações e suporte prioritário</small></span></label>
+   </div></div>
+   <div class="raven-choice-category"><h3>Serviços técnicos</h3><div class="raven-choice-grid">
+    <label class="raven-choice-card"><input type="radio" name="servico" value="Manutenção PC" required><span class="raven-choice-content"><span class="raven-choice-check" aria-hidden="true">✓</span><strong>Manutenção PC</strong><b>Sob orçamento</b><small>Diagnóstico, limpeza e upgrades</small></span></label>
+    <label class="raven-choice-card"><input type="radio" name="servico" value="Suporte Técnico" required><span class="raven-choice-content"><span class="raven-choice-check" aria-hidden="true">✓</span><strong>Suporte Técnico</strong><b>Sob orçamento</b><small>Programas, sistemas e assistência</small></span></label>
+    <label class="raven-choice-card"><input type="radio" name="servico" value="Redes e TI" required><span class="raven-choice-content"><span class="raven-choice-check" aria-hidden="true">✓</span><strong>Redes e TI</strong><b>Sob orçamento</b><small>Wi-Fi, roteadores e conectividade</small></span></label>
+   </div></div>
+  </fieldset>
+  <div class="raven-selected-summary" id="ravenSelectedSummary" role="status" aria-live="polite">Nenhuma opção selecionada ainda.</div>
+  <div class="raven-form-grid"><label>02 · Prazo desejado <select id="ravenDeadline" name="prazo"><option>Flexível</option><option>Até 30 dias</option><option>Urgente — consultar disponibilidade</option></select></label></div>
+  <label>03 · Conte um pouco sobre o projeto <textarea id="ravenDetails" name="detalhes" rows="4" maxlength="1500" placeholder="O que você precisa? Quais funcionalidades gostaria de ter?"></textarea></label>
+  <button type="submit" class="button primary raven-submit">Preparar orçamento no WhatsApp ↗</button>
+  <p id="ravenQuoteStatus" class="raven-fineprint" role="status" aria-live="polite">Nenhum pedido será enviado automaticamente sem sua confirmação no WhatsApp.</p> </form></div>
 </section>
 
         <section id="projetos" class="section projects-section">
