@@ -43,3 +43,51 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!WHATSAPP_RAVEN) contato.textContent = "Solicitar orçamento";
   }
 });
+
+
+// RAVEN 2.1 — Detalhes dos quatro serviços do painel.
+document.addEventListener("DOMContentLoaded", () => {
+  const catalogo = {
+    sites: { titulo:"Criação de Sites", descricao:"Projetos responsivos para apresentar sua marca e facilitar o contato com clientes.", itens:["Landing pages e páginas de vendas", "Sites institucionais e portfólios", "Catálogos e lojas virtuais sob orçamento", "Integração com WhatsApp e formulários"], servico:"Criação de Sites" },
+    pc: { titulo:"Manutenção de Computadores", descricao:"Serviços de diagnóstico e manutenção conforme a necessidade do equipamento.", itens:["Diagnóstico de problemas", "Limpeza e manutenção preventiva", "Instalação de SSD e memória", "Instalação e configuração de sistemas"], servico:"Manutenção PC" },
+    suporte: { titulo:"Suporte Técnico", descricao:"Assistência para resolver problemas de informática no dia a dia.", itens:["Configuração de programas", "Correção de erros de software", "Otimização básica de computadores", "Orientação e suporte técnico"], servico:"Suporte Técnico" },
+    redes: { titulo:"Redes e TI", descricao:"Soluções de conectividade para residências e pequenos negócios.", itens:["Configuração de roteadores e Wi-Fi", "Diagnóstico de conectividade", "Configuração de redes locais", "Orientação para melhorias da rede"], servico:"Redes e TI" }
+  };
+  const modal=document.getElementById("ravenServiceModal");
+  if (!modal) return;
+  const dialog=modal.querySelector(".raven-modal-dialog");
+  const titulo=document.getElementById("ravenModalTitle");
+  const descricao=document.getElementById("ravenModalDescription");
+  const lista=document.getElementById("ravenModalList");
+  const cta=document.getElementById("ravenModalCta");
+  let ultimoFoco=null;
+  function fechar(){ modal.hidden=true; document.body.classList.remove("raven-modal-open"); ultimoFoco?.focus(); }
+  document.querySelectorAll("[data-raven-service]").forEach(botao=>{
+    botao.addEventListener("click",()=>{
+      const dados=catalogo[botao.dataset.ravenService]; if(!dados)return;
+      ultimoFoco=botao;
+      titulo.textContent=dados.titulo;
+      descricao.textContent=dados.descricao;
+      lista.replaceChildren(...dados.itens.map(item=>{const li=document.createElement("li");li.textContent=item;return li;}));
+      cta.dataset.plan=dados.servico;
+      modal.hidden=false;document.body.classList.add("raven-modal-open");dialog.focus();
+    });
+  });
+  modal.querySelectorAll("[data-raven-close]").forEach(el=>el.addEventListener("click",fechar));
+  cta.addEventListener("click",()=>{
+    const servico=document.getElementById("ravenService");
+    if(servico){ const opcao=[...servico.options].find(o=>o.value===cta.dataset.plan); if(opcao)servico.value=opcao.value; }
+    fechar();
+  });
+  document.addEventListener("keydown",evento=>{
+    if(modal.hidden)return;
+    if(evento.key==="Escape"){evento.preventDefault();fechar();return;}
+    if(evento.key==="Tab"){
+      const focaveis=[...dialog.querySelectorAll('button:not([disabled]),a[href]')];
+      const primeiro=focaveis[0],ultimo=focaveis[focaveis.length-1];
+      if(evento.shiftKey && document.activeElement===primeiro){evento.preventDefault();ultimo.focus();}
+      else if(!evento.shiftKey && document.activeElement===ultimo){evento.preventDefault();primeiro.focus();}
+      else if(document.activeElement===dialog && evento.shiftKey){evento.preventDefault();ultimo.focus();}
+    }
+  });
+});

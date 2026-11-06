@@ -101,29 +101,29 @@
 
   <div class="panel-services">
 
-    <div class="service-tile">
+    <button class="service-tile raven-tile-button" type="button" data-raven-service="sites" aria-haspopup="dialog" aria-label="Ver detalhes de Criação de Sites">
       <span class="tile-icon">⌘</span>
       <h3>Criação de Sites</h3>
       <p>Web Design</p>
-    </div>
+    </button>
 
-    <div class="service-tile">
+    <button class="service-tile raven-tile-button" type="button" data-raven-service="pc" aria-haspopup="dialog" aria-label="Ver detalhes de Manutenção PC">
       <span class="tile-icon">▣</span>
       <h3>Manutenção PC</h3>
       <p>Hardware</p>
-    </div>
+    </button>
 
-    <div class="service-tile">
+    <button class="service-tile raven-tile-button" type="button" data-raven-service="suporte" aria-haspopup="dialog" aria-label="Ver detalhes de Suporte Técnico">
       <span class="tile-icon">◈</span>
       <h3>Suporte Técnico</h3>
       <p>Assistência</p>
-    </div>
+    </button>
 
-    <div class="service-tile">
+    <button class="service-tile raven-tile-button" type="button" data-raven-service="redes" aria-haspopup="dialog" aria-label="Ver detalhes de Redes e TI">
       <span class="tile-icon">◎</span>
       <h3>Redes e TI</h3>
       <p>Conectividade</p>
-    </div>
+    </button>
 
   </div>
 
@@ -139,6 +139,19 @@
 
         </section>
 
+
+        <!-- Janela interativa dos serviços do painel -->
+        <div class="raven-modal" id="ravenServiceModal" hidden>
+          <div class="raven-modal-backdrop" data-raven-close></div>
+          <section class="raven-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="ravenModalTitle" aria-describedby="ravenModalDescription" tabindex="-1">
+            <button class="raven-modal-close" type="button" data-raven-close aria-label="Fechar detalhes">✕</button>
+            <span class="raven-modal-eyebrow">RAVEN / SOLUÇÕES DIGITAIS</span>
+            <h2 id="ravenModalTitle"></h2>
+            <p id="ravenModalDescription"></p>
+            <ul id="ravenModalList"></ul>
+            <a class="button primary raven-modal-cta" id="ravenModalCta" href="#orcamento">Solicitar orçamento</a>
+          </section>
+        </div>
 
         <section id="servicos" class="section">
 
