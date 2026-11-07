@@ -854,3 +854,23 @@ body.raven-modal-open { overflow:hidden; }
 @media(max-width:850px){.raven-catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.raven-catalog-grid{grid-template-columns:1fr}.raven-catalog-card{padding:20px}.raven-filter{font-size:13px;padding:9px 12px}}
 @media(prefers-reduced-motion:reduce){.raven-catalog-dialog{animation:none}.raven-catalog-card,.raven-filter{transition:none}}
+
+/* RAVEN 3.3 — vitrines horizontais responsivas */
+.raven-catalog-grid{display:flex;flex-direction:column;gap:38px;min-width:0}
+.raven-shelf{min-width:0}
+.raven-shelf-heading{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:16px}
+.raven-shelf-name h3{color:#fff;font-size:clamp(19px,2.5vw,27px);margin:0 0 5px}
+.raven-shelf-name p{font-size:13px;color:var(--muted);margin:0}
+.raven-shelf-controls{display:flex;gap:9px;flex-shrink:0}
+.raven-shelf-arrow{width:40px;height:40px;border-radius:10px;background:#182313;border:1px solid #536c3b;color:var(--green);font-size:21px;cursor:pointer}
+.raven-shelf-arrow:hover:not(:disabled){background:var(--green);color:#081006}
+.raven-shelf-arrow:disabled{opacity:.28;cursor:default}
+.raven-shelf-track{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(240px,28vw,310px);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;padding:3px 2px 16px;scrollbar-width:thin;scrollbar-color:#5c7a36 #101910}
+.raven-shelf-track .raven-catalog-card{scroll-snap-align:start;min-height:280px;padding:20px}
+.raven-shelf-track .raven-catalog-card h3{font-size:19px}
+.raven-quote-more{border:1px solid #34462b;border-radius:12px;background:#101910;margin:20px 0;padding:0 16px}
+.raven-quote-more summary{padding:17px 0;cursor:pointer;font-weight:700;color:var(--green)}
+.raven-quote-more summary span{float:right}
+.raven-quote-more .raven-choice-grid{padding:5px 0 20px}
+@media(max-width:650px){.raven-shelf-track{grid-auto-columns:minmax(225px,78%);gap:12px}.raven-shelf-heading{align-items:center}.raven-shelf-arrow{width:35px;height:35px}.raven-shelf-track .raven-catalog-card{padding:17px;min-height:265px}}
+@media(prefers-reduced-motion:reduce){.raven-shelf-track{scroll-behavior:auto}}

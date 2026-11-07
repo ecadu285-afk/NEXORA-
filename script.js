@@ -132,20 +132,46 @@ document.addEventListener("DOMContentLoaded", () => {
     label.append(radio,content);extras.append(label);
     radio.addEventListener('change',()=>{const summary=document.getElementById('ravenSelectedSummary');if(summary)summary.textContent='✓ Selecionado: '+radio.value;});
   });
-  const cats=['Todos',...new Set(servicos.map(s=>s.categoria))];
-  const botoes=cats.map(c=>{const b=criar('button','raven-filter',c);b.type='button';b.setAttribute('aria-pressed',String(c===categoria));b.addEventListener('click',()=>{categoria=c;botoes.forEach((x,i)=>x.setAttribute('aria-pressed',String(cats[i]===c)));render();});filtros.append(b);return b;});
+  // RAVEN 3.3 — vitrines horizontais agrupadas em quatro departamentos.
+  const departamentos = [
+    {nome:'Desenvolvimento', descricao:'Sites, lojas, portfólios e aplicativos', categorias:['Web','Apps']},
+    {nome:'Sistemas e IA', descricao:'Automação, gestão e produtos em planejamento', categorias:['Sistemas','Produtos Raven']},
+    {nome:'Informática e TI', descricao:'Computadores, redes, backups e hospedagem', categorias:['TI']},
+    {nome:'Design e Presença Digital', descricao:'Marca, divulgação e presença online', categorias:['Digital']}
+  ];
+  filtros.hidden = true;
+  function criarCard(s){
+    const card=criar('article','raven-catalog-card');
+    const status=criar('span','raven-catalog-status'+(s.status==='futuro'?' future':''),statusNome(s));
+    const btn=criar('button','','Ver detalhes ↗');btn.type='button';btn.addEventListener('click',()=>abrir(s,btn));
+    card.append(criar('span','raven-catalog-category',s.categoria),criar('h3','',s.nome),criar('p','',s.descricao),criar('strong','',s.preco),status,btn);
+    return card;
+  }
   function render(){
     const q=busca.value.trim().toLocaleLowerCase('pt-BR');
-    const filtrados=servicos.filter(s=>(categoria==='Todos'||s.categoria===categoria)&&[s.nome,s.descricao,s.categoria,...s.recursos].join(' ').toLocaleLowerCase('pt-BR').includes(q));
+    const encontrados=servicos.filter(s=>[s.nome,s.descricao,s.categoria,...s.recursos].join(' ').toLocaleLowerCase('pt-BR').includes(q));
     grid.replaceChildren();
-    filtrados.forEach(s=>{
-      const card=criar('article','raven-catalog-card');
-      const status=criar('span','raven-catalog-status'+(s.status==='futuro'?' future':''),statusNome(s));
-      const btn=criar('button','','Ver detalhes ↗');btn.type='button';btn.addEventListener('click',()=>abrir(s,btn));
-      card.append(criar('span','raven-catalog-category',s.categoria),criar('h3','',s.nome),criar('p','',s.descricao),criar('strong','',s.preco),status,btn);grid.append(card);
+    departamentos.forEach(depto=>{
+      const itens=encontrados.filter(s=>depto.categorias.includes(s.categoria));
+      if(!itens.length)return;
+      const sec=criar('section','raven-shelf');
+      const cab=criar('div','raven-shelf-heading');
+      const nome=criar('div','raven-shelf-name');nome.append(criar('h3','',depto.nome),criar('p','',depto.descricao));
+      const controles=criar('div','raven-shelf-controls');
+      const anterior=criar('button','raven-shelf-arrow','←');anterior.type='button';anterior.setAttribute('aria-label','Rolar '+depto.nome+' para a esquerda');
+      const proximo=criar('button','raven-shelf-arrow','→');proximo.type='button';proximo.setAttribute('aria-label','Rolar '+depto.nome+' para a direita');
+      controles.append(anterior,proximo);cab.append(nome,controles);
+      const trilho=criar('div','raven-shelf-track');trilho.setAttribute('role','region');trilho.setAttribute('aria-label','Serviços de '+depto.nome);trilho.tabIndex=0;
+      itens.forEach(s=>trilho.append(criarCard(s)));
+      const atualizar=()=>{anterior.disabled=trilho.scrollLeft<4;proximo.disabled=trilho.scrollLeft+trilho.clientWidth>=trilho.scrollWidth-4;};
+      anterior.addEventListener('click',()=>trilho.scrollBy({left:-Math.max(240,trilho.clientWidth*.8),behavior:'smooth'}));
+      proximo.addEventListener('click',()=>trilho.scrollBy({left:Math.max(240,trilho.clientWidth*.8),behavior:'smooth'}));
+      trilho.addEventListener('scroll',atualizar,{passive:true});
+      if('ResizeObserver' in window)new ResizeObserver(atualizar).observe(trilho);
+      sec.append(cab,trilho);grid.append(sec);requestAnimationFrame(atualizar);
     });
-    document.getElementById('ravenCatalogCount').textContent=filtrados.length+' serviço(s) encontrado(s)';
-    if(!filtrados.length)grid.append(criar('p','','Nenhum serviço encontrado. Experimente outro termo.'));
+    document.getElementById('ravenCatalogCount').textContent=encontrados.length+' de '+servicos.length+' serviços e projetos';
+    if(!encontrados.length)grid.append(criar('p','','Nenhum serviço encontrado. Experimente outro termo.'));
   }
   function abrir(s,origem){atual=s;ultimoFoco=origem;
     document.getElementById('ravenCatalogModalCategory').textContent=s.categoria+' · '+statusNome(s);
